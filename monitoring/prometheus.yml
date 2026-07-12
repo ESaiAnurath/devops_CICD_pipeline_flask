@@ -1,0 +1,26 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+
+  # Prometheus monitoring itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Node Exporter - server-level metrics (CPU, RAM, disk, network)
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # Jenkins metrics (requires the Prometheus plugin installed in Jenkins)
+  - job_name: 'jenkins'
+    metrics_path: '/prometheus'
+    static_configs:
+      - targets: ['jenkins-host:8080']
+
+  # Your Flask application (requires prometheus_flask_exporter or a /metrics route)
+  - job_name: 'devops-demo-app'
+    static_configs:
+      - targets: ['app-host:5000']
