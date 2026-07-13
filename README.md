@@ -3,6 +3,26 @@
 # 🚀 End-to-End CI/CD Pipeline for Flask Application
 ### using GitHub • Jenkins • Docker • Docker Hub • AWS EC2
 
+## 📸OUTCOMES
+
+> Replace these placeholders with your actual screenshots in the `screenshots/` folder.
+
+| # | Screenshot | Description |
+|---|---|---|
+| 01 | `screenshots/01-github-repo.png` | GitHub Repository |
+| 02 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c" />` |JenkinsDashboard|
+| 03 | `screenshots/03-successful-pipeline.png` | Successful Pipeline Run |
+| 04 | `screenshots/04-console-output.png` | Jenkins Console Output |
+| 05 | `screenshots/05-docker-images.png` | Docker Images (`docker images`) |
+| 06 | `screenshots/06-dockerhub-repo.png` | Docker Hub Repository |
+| 07 | `<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3" />|AWS EC2 Instance |
+| 08 | `screenshots/08-security-group.png` | Security Group Configuration |
+| 09 | `screenshots/09-running-container.png` | Running Docker Container (`docker ps`) |
+| 10 | `screenshots/10-app-running.png` | Application Running in Browser |
+| 11 | `screenshots/11-github-webhook.png` | GitHub Webhook Configuration |
+
+---
+
 *Automating the complete deployment lifecycle — from `git push` to a live, running application — with zero manual steps.*
 
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-Automated-brightgreen)
@@ -319,27 +339,6 @@ This section documents actual problems encountered during the build — and how 
 | **Docker login warnings** | Docker CLI warned about storing credentials in plaintext config | Used credential injection via Jenkins (`docker login -u $USER -p $PASS`) rather than manual, persistent `docker login` sessions |
 
 > 📌 **Key takeaway:** Almost every real DevOps issue in this project traced back to either **permissions** (Linux user/group access) or **credential/ID mismatches** — both extremely common in real-world CI/CD debugging.
-
----
-
-## 📸 Screenshots
-
-> Replace these placeholders with your actual screenshots in the `screenshots/` folder.
-
-| # | Screenshot | Description |
-|---|---|---|
-| 01 | `screenshots/01-github-repo.png` | GitHub Repository |
-| 02 | `<img width="1919" height="886" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c" />
-` | Jenkins Dashboard |
-| 03 | `screenshots/03-successful-pipeline.png` | Successful Pipeline Run |
-| 04 | `screenshots/04-console-output.png` | Jenkins Console Output |
-| 05 | `screenshots/05-docker-images.png` | Docker Images (`docker images`) |
-| 06 | `screenshots/06-dockerhub-repo.png` | Docker Hub Repository |
-| 07 | `screenshots/07-ec2-instance.png` | AWS EC2 Instance |
-| 08 | `screenshots/08-security-group.png` | Security Group Configuration |
-| 09 | `screenshots/09-running-container.png` | Running Docker Container (`docker ps`) |
-| 10 | `screenshots/10-app-running.png` | Application Running in Browser |
-| 11 | `screenshots/11-github-webhook.png` | GitHub Webhook Configuration |
 
 ---
 
