@@ -70,6 +70,7 @@ pipeline {
                 }
             }
         }
+    }
       /*  stage('Deploy') {
     steps {
         sshagent(['deploy-server-ssh-key']) {
@@ -81,14 +82,14 @@ pipeline {
             """
         }
     }*/
-}
+
     /*    stage('Deploy') {
     steps {
         echo "Docker image successfully pushed to DockerHub."
         echo "Deployment stage skipped for demo project."
     }
-}*/
-    }
+}
+    }*/
 
     post {
         success {
@@ -101,4 +102,4 @@ pipeline {
             sh "docker logout || true"  // Logout from DockerHub to clean up credentials
         }
     }
-
+}
