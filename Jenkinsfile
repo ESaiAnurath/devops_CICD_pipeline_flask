@@ -5,7 +5,7 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')   // set up in Jenkins > Credentials
         IMAGE_NAME  = "eshwarapragadasaianurath7779/devops-demo-app"
         IMAGE_TAG   = "${env.BUILD_NUMBER}"
-        DEPLOY_HOST = "http://3.84.176.50/"                   // EC2 / cloud VM public IP
+        DEPLOY_HOST = "3.94.132.134"                   // EC2 / cloud VM public IP
     }
 
     stages {
@@ -70,6 +70,12 @@ pipeline {
                 }
             }
         }
+    /*    stage('Deploy') {
+    steps {
+        echo "Docker image successfully pushed to DockerHub."
+        echo "Deployment stage skipped for demo project."
+    }
+}*/
     }
 
     post {
