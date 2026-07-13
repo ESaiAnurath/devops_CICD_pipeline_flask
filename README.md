@@ -5,22 +5,19 @@
 
 ## 📸OUTCOMES
 
-> Replace these placeholders with your actual screenshots in the `screenshots/` folder.
-
 | # | Screenshot | Description |
 |---|---|---|
 | 01 | `screenshots/01-github-repo.png` | GitHub Repository |
 | 02 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c"/>` |JenkinsDashboard|
 | 03 | `screenshots/03-successful-pipeline.png` | Successful Pipeline Run |
-| 04 | `screenshots/04-console-output.png` | Jenkins Console Output |
+| 04 | `` | Jenkins Console Output |
 | 05 | `<img width="1888" height="172" alt="image" src="https://github.com/user-attachments/assets/4756e792-146d-41d4-9917-a48c481b60c4"/>'|DockerImages|
 | 06 | `<img width="1919" height="883" alt="image" src="https://github.com/user-attachments/assets/c429128f-4571-4b79-9c2e-ff117cbcbe1b" />'|Docker Hub repo|
 | 07 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>'|AWS EC2 Instance |
 | 08 | `<img width="1919" height="885" alt="image" src="https://github.com/user-attachments/assets/73264c5b-8e2b-4b37-91f3-40dcfea06e83"/>'|Security Group Cfg|
 | 09 | `<img width="1854" height="78" alt="image" src="https://github.com/user-attachments/assets/29f7825e-421b-4cd5-b11b-d0457bc99501"/>'|RunningDockerContainer (`docker ps`) |
-|10|`<img width="1605" height="973" alt="image" src="https://github.com/user-attachments/assets/36855752-d267-4f24-9053-a5bfc2b0de8b" />'
-|ApplicatioRunning in Browser|
-| 11 | `screenshots/11-github-webhook.png` | GitHub Webhook Configuration |
+|10|`<img width="1605" height="973" alt="image" src="https://github.com/user-attachments/assets/36855752-d267-4f24-9053-a5bfc2b0de8b" />'|APPL run in Browser|
+
 
 
 ---
@@ -51,18 +48,16 @@
 8. [Jenkins Pipeline Details](#-jenkins-pipeline-details)
 9. [AWS Configuration](#-aws-configuration)
 10. [Real Challenges & Troubleshooting](#-real-challenges--troubleshooting)
-11. [Screenshots](#-screenshots)
-12. [Important Commands Reference](#-important-commands-reference)
-13. [Interview Questions From This Project](#-interview-questions-from-this-project)
-14. [Learning Outcomes](#-learning-outcomes)
-15. [Future Improvements](#-future-improvements)
-16. [Author](#-author)
+11. [Important Commands Reference](#-important-commands-reference)
+12. [Learning Outcomes](#-learning-outcomes)
+13. [Future Improvements](#-future-improvements)
+14. [Author](#-author)
 
 ---
 
 ## 📖 Project Overview
 
-This project implements a **fully automated CI/CD pipeline** for a Python Flask application. Every time code is pushed to GitHub, the application is automatically **built, containerized, pushed to a registry, and deployed to a live AWS EC2 server** — with no manual intervention.
+This project implements a **CI/CD Pipeline with Manual Jenkins Trigger** for a Python Flask application. Every time code is pushed to GitHub, the application is automatically **built, containerized, pushed to a registry, and deployed to a live AWS EC2 server** — with no manual intervention.
 
 > 💡 **In short:** `git push` → live, updated application. That's the entire deployment process for the developer.
 
@@ -92,7 +87,7 @@ The goal of this project is to **eliminate every manual step** in that process b
 | **Containerization** | Docker | Packages the app with all its dependencies into one portable unit — guarantees the app runs identically on any machine, dev or prod |
 | **Container Registry** | Docker Hub | A central, always-available location to store and version built images so any server can pull the exact image that was tested |
 | **Version Control** | Git | Tracks every code change, enables rollback, and is the trigger point for the entire pipeline |
-| **Source Code Management** | GitHub | Hosts the repository and provides **webhooks**, which is what allows GitHub to automatically notify Jenkins the instant new code is pushed |
+| **Source Code Management** | GitHub | once pushed new commit we re build  Jenkins |
 | **CI/CD Orchestration** | Jenkins | An open-source automation server that executes the build → push → deploy sequence automatically, exactly the same way every single time |
 | **Deployment Server** | AWS EC2 (Ubuntu) | A real cloud virtual machine that hosts the live, running application — simulating a production environment |
 | **Remote Access** | SSH | A secure, encrypted channel that allows Jenkins to execute deployment commands on the remote EC2 server without exposing credentials in plain text |
