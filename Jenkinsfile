@@ -61,10 +61,10 @@ pipeline {
                 sshagent(['deploy-server-ssh-key']) {
                     sh """
                         ssh -o StrictHostKeyChecking=no ubuntu@${DEPLOY_HOST} '
-                            docker pull ${IMAGE_NAME}:latest &&
-                            docker stop devops-demo-app || true &&
-                            docker rm devops-demo-app || true &&
-                            docker run -d --name devops-demo-app -p 5000:5000 ${IMAGE_NAME}:latest
+                           sudo  docker pull ${IMAGE_NAME}:latest &&
+                           sudo docker stop devops-demo-app || true &&
+                            sudo docker rm devops-demo-app || true &&
+                            sudo docker run -d --name devops-demo-app -p 5000:5000 ${IMAGE_NAME}:latest
                         '
                     """
                 }
