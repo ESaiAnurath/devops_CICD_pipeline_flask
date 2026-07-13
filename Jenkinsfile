@@ -55,7 +55,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+      /*  stage('Deploy') {
             steps {
                 // SSH into the deploy server and restart the container with the new image
                 sshagent(['deploy-server-ssh-key']) {
@@ -69,7 +69,19 @@ pipeline {
                     """
                 }
             }
+        }*/
+        stage('Deploy') {
+    steps {
+        sshagent(['deploy-server-ssh-key']) {
+            sh """
+                ssh -o StrictHostKeyChecking=no ubuntu@${DEPLOY_HOST} "
+                    hostname
+                    docker --version
+                "
+            """
         }
+    }
+}
     /*    stage('Deploy') {
     steps {
         echo "Docker image successfully pushed to DockerHub."
