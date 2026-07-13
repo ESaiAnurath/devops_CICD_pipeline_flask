@@ -7,28 +7,28 @@
 
 | # | Screenshot | Description |
 |---|---|---|
-| 01 | `screenshots/01-github-repo.png` | GitHub Repository |
-| 02 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c"/>` | Jenkins Dashboard |
+| 01 | `<img width="1919" height="882" alt="image" src="https://github.com/user-attachments/assets/3a7782eb-8237-44cb-99ad-4d72b5bb9ce2" />'|GitHub Repo|
+| 02 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c"/>' | Jenkins Dashboard 
 | 03 | `screenshots/03-successful-pipeline.png` | Successful Build |
 | 04 | `` | Jenkins Console Output |
-| 05 | `<img width="1888" height="172" alt="image" src="https://github.com/user-attachments/assets/4756e792-146d-41d4-9917-a48c481b60c4"/>` | Docker Images |
-| 06 | `<img width="1919" height="883" alt="image" src="https://github.com/user-attachments/assets/c429128f-4571-4b79-9c2e-ff117cbcbe1b" />` | DockerHub Repository |
-| 07 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>` | EC2 Instance |
-| 08 | `<img width="1919" height="885" alt="image" src="https://github.com/user-attachments/assets/73264c5b-8e2b-4b37-91f3-40dcfea06e83"/>` | Security Group |
-| 09 | `<img width="1854" height="78" alt="image" src="https://github.com/user-attachments/assets/29f7825e-421b-4cd5-b11b-d0457bc99501"/>` | Running Container (`docker ps`) |
-| 10 | `<img width="1605" height="973" alt="image" src="https://github.com/user-attachments/assets/36855752-d267-4f24-9053-a5bfc2b0de8b" />` | Browser Output |
+| 05 | `<img width="1888" height="172" alt="image" src="https://github.com/user-attachments/assets/4756e792-146d-41d4-9917-a48c481b60c4"/>' | Docker Images |
+| 06 | `<img width="1919" height="883" alt="image" src="https://github.com/user-attachments/assets/c429128f-4571-4b79-9c2e-ff117cbcbe1b" />' | DockerHub Repository |
+| 07 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>' | EC2 Instance |
+| 08 | `<img width="1919" height="885" alt="image" src="https://github.com/user-attachments/assets/73264c5b-8e2b-4b37-91f3-40dcfea06e83"/>' | Security Group |
+| 09 | `<img width="1854" height="78" alt="image" src="https://github.com/user-attachments/assets/29f7825e-421b-4cd5-b11b-d0457bc99501"/>' | Running Container (`docker ps`) |
+| 10 | `<img width="1605" height="973" alt="image" src="https://github.com/user-attachments/assets/36855752-d267-4f24-9053-a5bfc2b0de8b" />'| Browser Output |
 
 ---
 
 *Deploying a Flask application through a Jenkins pipeline — from `git push` to a manually triggered, live running application.*
 
-![CI/CD](https://img.shields.io/badge/CI%2FCD-Automated-brightgreen)
-![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)
-![Jenkins](https://img.shields.io/badge/Jenkins-Pipeline-D24939?logo=jenkins&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-EC2-FF9900?logo=amazonaws&logoColor=white)
-![Python](https://img.shields.io/badge/Python-Flask-3776AB?logo=python&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-blue)
-![Status](https://img.shields.io/badge/Status-Completed-success)
+![CI/CD]
+![Docker]
+![Jenkins]
+![AWS]
+![Python])
+![License]
+![Status]
 
 </div>
 
@@ -49,10 +49,9 @@
 11. [Docker Deployment Process](#-docker-deployment-process)
 12. [Real Challenges & Troubleshooting](#-real-challenges--troubleshooting)
 13. [Important Commands Reference](#-important-commands-reference)
-14. [Project Screenshots](#-project-screenshots)
-15. [Learning Outcomes](#-learning-outcomes)
-16. [Future Improvements](#-future-improvements)
-17. [Author](#-author)
+14. [Learning Outcomes](#-learning-outcomes)
+15. [Future Improvements](#-future-improvements)
+16. [Author](#-author)
 
 ---
 
@@ -384,19 +383,12 @@ ssh -i key.pem ubuntu@<ec2-public-ip>  # Connect to EC2 via SSH
 ```
 
 ---
+screenshots
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/6f6f0d0c-72f2-4187-aa32-77f67c12f664" />
+<img width="1919" height="886" alt="image" src="https://github.com/user-attachments/assets/96b9d194-9a1d-4eb7-90ac-938266c07fbe" />
 
-## 📸 Project Screenshots
+<img width="1919" height="893" alt="image" src="https://github.com/user-attachments/assets/20fe1e74-53f8-4fc1-bfc7-0d53e8aae515" />
 
-- GitHub Repository
-- Jenkins Dashboard
-- Successful Build
-- Jenkins Console Output
-- Docker Images
-- DockerHub Repository
-- EC2 Instance
-- Security Group
-- Running Container
-- Browser Output
 
 ---
 
@@ -432,9 +424,7 @@ Through building this project, the following skills were developed hands-on:
 
 ## 👤 Author
 
-Built and documented as a hands-on DevOps portfolio project demonstrating real-world CI/CD pipeline design, cloud deployment, and troubleshooting skills.
-
-**Connect with me:** *[Add your LinkedIn / GitHub / Portfolio links here]*
+**E.SAI ANURATH 
 
 ---
 
