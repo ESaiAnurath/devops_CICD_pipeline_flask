@@ -55,7 +55,7 @@ pipeline {
             }
         }
 
-      /*  stage('Deploy') {
+       stage('Deploy') {
             steps {
                 // SSH into the deploy server and restart the container with the new image
                 sshagent(['deploy-server-ssh-key']) {
@@ -69,8 +69,8 @@ pipeline {
                     """
                 }
             }
-        }*/
-        stage('Deploy') {
+        }
+      /*  stage('Deploy') {
     steps {
         sshagent(['deploy-server-ssh-key']) {
             sh """
@@ -80,7 +80,7 @@ pipeline {
                 "
             """
         }
-    }
+    }*/
 }
     /*    stage('Deploy') {
     steps {
