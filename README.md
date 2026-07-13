@@ -329,7 +329,8 @@ This section documents actual problems encountered during the build — and how 
 | # | Screenshot | Description |
 |---|---|---|
 | 01 | `screenshots/01-github-repo.png` | GitHub Repository |
-| 02 | `screenshots/02-jenkins-dashboard.png` | Jenkins Dashboard |
+| 02 | `<img width="1919" height="886" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c" />
+` | Jenkins Dashboard |
 | 03 | `screenshots/03-successful-pipeline.png` | Successful Pipeline Run |
 | 04 | `screenshots/04-console-output.png` | Jenkins Console Output |
 | 05 | `screenshots/05-docker-images.png` | Docker Images (`docker images`) |
@@ -371,27 +372,6 @@ ssh -i key.pem ubuntu@<ec2-public-ip>  # Connect to EC2 via SSH
 
 ---
 
-## ❓ Interview Questions From This Project
-
-<details>
-<summary><strong>Click to expand common interview questions and how to answer them</strong></summary>
-
-- **Why Docker?** — Guarantees the app runs identically across dev, test, and production by packaging code + dependencies + runtime into one portable unit.
-- **Why Gunicorn instead of Flask's built-in server?** — Flask's dev server is single-threaded and not built for concurrent production traffic; Gunicorn is a production-grade WSGI server.
-- **Why Jenkins?** — Automates the build/test/deploy sequence reliably and repeatably, triggered by source code changes.
-- **Why Docker Hub?** — Acts as a central registry so any authorized server can pull the exact tested image, rather than rebuilding it inconsistently on each machine.
-- **Difference between CI and CD?** — CI (Continuous Integration) is about automatically building and testing code on every change; CD (Continuous Deployment/Delivery) is about automatically releasing that validated code to an environment.
-- **Difference between a Docker image and a container?** — An image is a static, read-only blueprint (code + dependencies); a container is a running instance of that image.
-- **Why run Jenkins inside Docker?** — Isolates Jenkins and its dependencies from the host OS, making it portable and easy to back up or migrate.
-- **Why SSH for deployment?** — Provides a secure, encrypted, key-authenticated channel to execute remote commands without exposing plaintext credentials.
-- **Explain the Jenkinsfile.** — A declarative pipeline-as-code file defining stages (Checkout, Build, Push, Deploy, Post) that Jenkins executes in order, failing fast if any stage errors.
-- **Explain the entire deployment workflow.** — Push to GitHub → webhook triggers Jenkins → Jenkins builds and pushes a Docker image → Jenkins SSHes into EC2 → old container replaced with new → app is live.
-- **Explain the Dockerfile.** — Defines the base image, working directory, dependency installation, exposed port, and startup command needed to containerize the app.
-- **Explain the GitHub webhook.** — An HTTP callback configured in GitHub that automatically notifies Jenkins (via a POST request) the instant new code is pushed, eliminating the need for manual or scheduled polling.
-
-</details>
-
----
 
 ## 🎓 Learning Outcomes
 
