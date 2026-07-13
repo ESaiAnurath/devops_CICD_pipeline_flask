@@ -13,13 +13,15 @@
 | 02 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c"/>` |JenkinsDashboard|
 | 03 | `screenshots/03-successful-pipeline.png` | Successful Pipeline Run |
 | 04 | `screenshots/04-console-output.png` | Jenkins Console Output |
-| 05 | `screenshots/05-docker-images.png` | Docker Images (`docker images`) |
-| 06 | `screenshots/06-dockerhub-repo.png` | Docker Hub Repository |
+| 05 | `<img width="1888" height="172" alt="image" src="https://github.com/user-attachments/assets/4756e792-146d-41d4-9917-a48c481b60c4"/>'|DockerImages|
+| 06 | `<img width="1919" height="883" alt="image" src="https://github.com/user-attachments/assets/c429128f-4571-4b79-9c2e-ff117cbcbe1b" />'|Docker Hub repo|
 | 07 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>'|AWS EC2 Instance |
-| 08 | `screenshots/08-security-group.png` | Security Group Configuration |
-| 09 | `screenshots/09-running-container.png` | Running Docker Container (`docker ps`) |
-| 10 | `screenshots/10-app-running.png` | Application Running in Browser |
+| 08 | `<img width="1919" height="885" alt="image" src="https://github.com/user-attachments/assets/73264c5b-8e2b-4b37-91f3-40dcfea06e83"/>'|Security Group Cfg|
+| 09 | `<img width="1854" height="78" alt="image" src="https://github.com/user-attachments/assets/29f7825e-421b-4cd5-b11b-d0457bc99501"/>'|RunningDockerContainer (`docker ps`) |
+|10|`<img width="1605" height="973" alt="image" src="https://github.com/user-attachments/assets/36855752-d267-4f24-9053-a5bfc2b0de8b" />'
+|ApplicatioRunning in Browser|
 | 11 | `screenshots/11-github-webhook.png` | GitHub Webhook Configuration |
+
 
 ---
 
