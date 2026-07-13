@@ -3,26 +3,24 @@
 # 🚀 End-to-End CI/CD Pipeline for Flask Application
 ### using GitHub • Jenkins • Docker • Docker Hub • AWS EC2
 
-## 📸OUTCOMES
+## 📸 OUTCOMES
 
 | # | Screenshot | Description |
 |---|---|---|
 | 01 | `screenshots/01-github-repo.png` | GitHub Repository |
-| 02 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c"/>` |JenkinsDashboard|
-| 03 | `screenshots/03-successful-pipeline.png` | Successful Pipeline Run |
+| 02 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/8f616ee2-fe31-4c2f-8679-76a1ba45e39c"/>` | Jenkins Dashboard |
+| 03 | `screenshots/03-successful-pipeline.png` | Successful Build |
 | 04 | `` | Jenkins Console Output |
-| 05 | `<img width="1888" height="172" alt="image" src="https://github.com/user-attachments/assets/4756e792-146d-41d4-9917-a48c481b60c4"/>'|DockerImages|
-| 06 | `<img width="1919" height="883" alt="image" src="https://github.com/user-attachments/assets/c429128f-4571-4b79-9c2e-ff117cbcbe1b" />'|Docker Hub repo|
-| 07 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>'|AWS EC2 Instance |
-| 08 | `<img width="1919" height="885" alt="image" src="https://github.com/user-attachments/assets/73264c5b-8e2b-4b37-91f3-40dcfea06e83"/>'|Security Group Cfg|
-| 09 | `<img width="1854" height="78" alt="image" src="https://github.com/user-attachments/assets/29f7825e-421b-4cd5-b11b-d0457bc99501"/>'|RunningDockerContainer (`docker ps`) |
-|10|`<img width="1605" height="973" alt="image" src="https://github.com/user-attachments/assets/36855752-d267-4f24-9053-a5bfc2b0de8b" />'|APPL run in Browser|
-
-
+| 05 | `<img width="1888" height="172" alt="image" src="https://github.com/user-attachments/assets/4756e792-146d-41d4-9917-a48c481b60c4"/>` | Docker Images |
+| 06 | `<img width="1919" height="883" alt="image" src="https://github.com/user-attachments/assets/c429128f-4571-4b79-9c2e-ff117cbcbe1b" />` | DockerHub Repository |
+| 07 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>` | EC2 Instance |
+| 08 | `<img width="1919" height="885" alt="image" src="https://github.com/user-attachments/assets/73264c5b-8e2b-4b37-91f3-40dcfea06e83"/>` | Security Group |
+| 09 | `<img width="1854" height="78" alt="image" src="https://github.com/user-attachments/assets/29f7825e-421b-4cd5-b11b-d0457bc99501"/>` | Running Container (`docker ps`) |
+| 10 | `<img width="1605" height="973" alt="image" src="https://github.com/user-attachments/assets/36855752-d267-4f24-9053-a5bfc2b0de8b" />` | Browser Output |
 
 ---
 
-*Automating the complete deployment lifecycle — from `git push` to a live, running application — with zero manual steps.*
+*Deploying a Flask application through a Jenkins pipeline — from `git push` to a manually triggered, live running application.*
 
 ![CI/CD](https://img.shields.io/badge/CI%2FCD-Automated-brightgreen)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?logo=docker&logoColor=white)
@@ -47,19 +45,20 @@
 7. [What We Implemented](#-what-we-implemented-step-by-step)
 8. [Jenkins Pipeline Details](#-jenkins-pipeline-details)
 9. [AWS Configuration](#-aws-configuration)
-10. [Real Challenges & Troubleshooting](#-real-challenges--troubleshooting)
-11. [Important Commands Reference](#-important-commands-reference)
-12. [Learning Outcomes](#-learning-outcomes)
-13. [Future Improvements](#-future-improvements)
-14. [Author](#-author)
+10. [Jenkins Credentials](#-jenkins-credentials)
+11. [Docker Deployment Process](#-docker-deployment-process)
+12. [Real Challenges & Troubleshooting](#-real-challenges--troubleshooting)
+13. [Important Commands Reference](#-important-commands-reference)
+14. [Project Screenshots](#-project-screenshots)
+15. [Learning Outcomes](#-learning-outcomes)
+16. [Future Improvements](#-future-improvements)
+17. [Author](#-author)
 
 ---
 
 ## 📖 Project Overview
 
-This project implements a **CI/CD Pipeline with Manual Jenkins Trigger** for a Python Flask application. Every time code is pushed to GitHub, the application is automatically **built, containerized, pushed to a registry, and deployed to a live AWS EC2 server** — with no manual intervention.
-
-> 💡 **In short:** `git push` → live, updated application. That's the entire deployment process for the developer.
+This project implements a **CI/CD Pipeline with Manual Jenkins Trigger** for a Python Flask application. After pushing code to GitHub, Jenkins can be manually triggered to build and deploy the latest version of the application — the Flask app is built, containerized with Docker, pushed to Docker Hub, and deployed to a live AWS EC2 server over SSH. This pipeline does not use a GitHub webhook; the build is started manually via **Build Now**.
 
 This project was built to demonstrate practical, hands-on understanding of **Continuous Integration (CI)** and **Continuous Deployment (CD)**, using the same category of tools used in real production environments.
 
@@ -67,14 +66,12 @@ This project was built to demonstrate practical, hands-on understanding of **Con
 
 ## 🎯 Project Goal
 
-Manually deploying an application is slow and error-prone: build a Docker image, log in to a registry, push the image, SSH into a server, stop the old container, remove it, pull the new image, and start a new container — every single time the code changes.
+The goal of this project was to:
 
-The goal of this project is to **eliminate every manual step** in that process by encoding it into a Jenkins pipeline, so that deployment becomes:
-
-- ✅ Repeatable
-- ✅ Fast
-- ✅ Consistent (no "it worked on my machine")
-- ✅ Free of human error
+- 📚 Learn how a CI/CD pipeline is implemented in practice
+- ⚙️ Automate the build and deployment steps using Jenkins
+- 🧹 Reduce manual deployment effort (build, push, SSH, restart container)
+- 🐳 Deploy a Docker container of the Flask application on AWS EC2
 
 ---
 
@@ -86,9 +83,9 @@ The goal of this project is to **eliminate every manual step** in that process b
 | **Production Server** | Gunicorn | Flask's built-in server is single-threaded and not designed for production traffic; Gunicorn is a production-grade WSGI server that handles concurrent requests reliably |
 | **Containerization** | Docker | Packages the app with all its dependencies into one portable unit — guarantees the app runs identically on any machine, dev or prod |
 | **Container Registry** | Docker Hub | A central, always-available location to store and version built images so any server can pull the exact image that was tested |
-| **Version Control** | Git | Tracks every code change, enables rollback, and is the trigger point for the entire pipeline |
-| **Source Code Management** | GitHub | once pushed new commit we re build  Jenkins |
-| **CI/CD Orchestration** | Jenkins | An open-source automation server that executes the build → push → deploy sequence automatically, exactly the same way every single time |
+| **Version Control** | Git | Tracks every code change and is the source of truth for what Jenkins builds |
+| **Source Code Management** | GitHub | GitHub stores the source code repository that Jenkins clones during the Checkout stage |
+| **CI/CD Orchestration** | Jenkins | An open-source automation server that executes the build → push → deploy sequence when manually triggered via **Build Now** |
 | **Deployment Server** | AWS EC2 (Ubuntu) | A real cloud virtual machine that hosts the live, running application — simulating a production environment |
 | **Remote Access** | SSH | A secure, encrypted channel that allows Jenkins to execute deployment commands on the remote EC2 server without exposing credentials in plain text |
 | **Operating System** | Ubuntu Linux | Industry-standard, well-documented Linux distribution for both the Jenkins host and the EC2 deployment target |
@@ -117,17 +114,21 @@ devops_CICD_pipeline_flask/
 ### High-Level Pipeline Flow
 
 ```
-┌────────────┐     ┌─────────┐     ┌──────────┐     ┌─────────┐     ┌───────────┐     ┌────────────┐     ┌────────────┐
-│ Developer  │────▶│ GitHub  │────▶│ Webhook  │────▶│ Jenkins │────▶│ Build     │────▶│ Docker Hub │────▶│ AWS EC2    │
-│ (git push) │     │  Repo   │     │ Trigger  │     │ Pipeline│     │ Docker    │     │ (Registry) │     │ (Deploy)   │
-└────────────┘     └─────────┘     └──────────┘     └─────────┘     │ Image     │     └────────────┘     └─────┬──────┘
-                                                                     └───────────┘                              │
-                                                                                                                 ▼
-                                                                                                         ┌────────────────┐
-                                                                                                         │ Docker Container│
-                                                                                                         │ Flask Application│
-                                                                                                         │  (Live & Running)│
-                                                                                                         └────────────────┘
+Developer
+      ↓
+GitHub
+      ↓
+Manual Build (Build Now)
+      ↓
+Jenkins
+      ↓
+Docker Build
+      ↓
+Docker Hub
+      ↓
+EC2
+      ↓
+Docker Container
 ```
 
 ### Inside AWS EC2 — Container Lifecycle
@@ -152,31 +153,19 @@ devops_CICD_pipeline_flask/
 ## 🔄 Project Workflow
 
 ```
-1.  Developer writes code
-        ↓
-2.  Developer pushes code to GitHub
-        ↓
-3.  GitHub webhook automatically triggers Jenkins
-        ↓
-4.  Jenkins pulls the latest source code
-        ↓
-5.  Jenkins builds a Docker image
-        ↓
-6.  Jenkins logs into Docker Hub
-        ↓
-7.  Jenkins pushes the Docker image
-        ↓
-8.  Jenkins connects to AWS EC2 via SSH
-        ↓
-9.  EC2 pulls the latest Docker image
-        ↓
-10. Old Docker container is stopped
-        ↓
-11. Old Docker container is removed
-        ↓
-12. New Docker container starts
-        ↓
-13. ✅ Updated application is live — automatically
+1. Developer writes code
+2. Pushes code to GitHub
+3. Opens Jenkins
+4. Clicks Build Now
+5. Jenkins clones repository
+6. Builds Docker image
+7. Pushes image to Docker Hub
+8. Jenkins SSH into EC2
+9. Pull latest Docker image
+10. Stop old container
+11. Remove old container
+12. Start new container
+13. Application available on EC2
 ```
 
 ---
@@ -214,14 +203,14 @@ The Dockerfile performs:
 ### 4️⃣ Created a GitHub Repository
 **Purpose:** Central, version-controlled home for the code.
 
-> 💡 **Why GitHub in a CI/CD pipeline?**
-> GitHub isn't just storage — it's the **trigger mechanism**. Its webhook feature notifies Jenkins the moment new code is pushed, which is what makes the pipeline "continuous" instead of something you have to run manually.
+> 💡 **Why GitHub in this pipeline?**
+> GitHub stores the source code repository. Whenever the Jenkins pipeline is triggered after pushing code to GitHub, Jenkins clones the latest version of the repository as the first step of the build.
 
 ### 5️⃣ Installed Jenkins Inside a Docker Container
 **Purpose:** Automate the build, test, and deployment process.
 
 > 💡 **Why Jenkins?**
-> Jenkins is the industry-standard open-source automation server for CI/CD. It listens for triggers (like a GitHub webhook), executes a defined sequence of steps (the pipeline), and reports success/failure — removing all manual deployment work.
+> Jenkins is the industry-standard open-source automation server for CI/CD. It executes a defined sequence of steps (the pipeline) when manually triggered, and reports success/failure — reducing manual deployment work.
 
 > 💡 **Why run Jenkins inside Docker?**
 > Running Jenkins as a container keeps the host machine clean, makes Jenkins easy to back up/restore/move, and avoids polluting the host with Jenkins' own dependencies (Java, plugins, etc.).
@@ -256,7 +245,7 @@ Pipeline stages: **Checkout → Build Docker Image → Push Docker Image → Dep
 ### 🔹 Stage 1 — Checkout
 **Purpose:** Pull the latest code from GitHub into the Jenkins workspace.
 
-This ensures every single build starts from the exact current state of the `main` branch — never a stale or cached copy.
+This ensures every build starts from the exact current state of the `main` branch — never a stale or cached copy.
 
 ### 🔹 Stage 2 — Build Docker Image
 **Purpose:** Package the application and its dependencies into a Docker image.
@@ -279,10 +268,13 @@ docker build -t image:buildnumber -t image:latest .
 **Purpose:** SSH into the EC2 server and replace the running container with the newly built one.
 
 ```bash
-docker pull image:latest      # Downloads the newest image from Docker Hub
-docker stop devops-demo-app   # Gracefully stops the currently running container
-docker rm devops-demo-app     # Removes the stopped container so the name/port is freed
-docker run -d --name devops-demo-app -p 5000:5000 image:latest   # Starts the new version
+docker pull
+
+docker stop
+
+docker rm
+
+docker run
 ```
 
 Each command explained:
@@ -318,22 +310,47 @@ Each command explained:
 
 ---
 
+## 🔐 Jenkins Credentials
+
+| Credential | Type | Credential ID |
+|---|---|---|
+| **DockerHub Credentials** | Username + Password | `dockerhub-creds` |
+| **SSH Private Key** | SSH Username with Private Key | `deploy-server-ssh-key` |
+
+These credentials are stored in Jenkins' built-in **Credentials Store**, which encrypts secrets at rest and injects them into the pipeline only at runtime — keeping them out of the Jenkinsfile and out of build logs.
+
+---
+
+## 🐳 Docker Deployment Process
+
+```
+docker pull
+
+docker stop
+
+docker rm
+
+docker run
+```
+
+On the EC2 server, Jenkins connects over SSH and runs this sequence: it **pulls** the latest image from Docker Hub, **stops** the currently running container, **removes** that stopped container, and then **runs** a new container from the freshly pulled image. This guarantees the server always ends up running exactly one, up-to-date instance of the application.
+
+---
+
 ## 🐞 Real Challenges & Troubleshooting
 
-This section documents actual problems encountered during the build — and how each was resolved. This is often what interviewers care about most, since it proves hands-on debugging experience rather than just following a tutorial.
+This section documents actual problems encountered during the build — and how each was resolved.
 
 | Issue | Root Cause | Fix |
 |---|---|---|
-| **Jenkins container could not SSH into EC2** | The Jenkins Docker container didn't have the SSH Agent plugin configured, and no key was mounted/loaded | Installed the **SSH Agent plugin** and added the private key as a Jenkins credential (`deploy-server-ssh-key`) |
-| **`deploy-server-ssh-key` not found** | Credential ID in the Jenkinsfile didn't exactly match the ID configured in Jenkins' Credentials Store | Re-checked and matched the credential ID exactly (IDs are case-sensitive) |
 | **Docker permission denied** | The Jenkins user account didn't have permission to access the Docker daemon | Added the `jenkins` user to the `docker` group: `sudo usermod -aG docker jenkins`, then restarted Jenkins |
-| **Ubuntu user not in Docker group (on EC2)** | Same root cause as above, but on the deploy server itself | `sudo usermod -aG docker ubuntu` and re-logged in for the group change to take effect |
-| **Permission denied accessing `docker.sock`** | The Docker socket file has restrictive permissions by default, and the calling user wasn't in the `docker` group | Fixed by correcting group membership (see above) instead of unsafely `chmod`-ing the socket |
-| **Extra braces / Groovy syntax errors in Jenkinsfile** | Declarative pipeline syntax is strict — a missing or extra `{ }` breaks the entire pipeline parse step | Used Jenkins' **"Replay"** and **"Validate Declarative Pipeline"** tools to pinpoint the exact line, then corrected the brace structure |
-| **SSH connectivity issues** | EC2 Security Group didn't have port 22 open to the Jenkins server's IP | Updated the inbound rule to allow SSH from the correct source |
-| **Pipeline failed multiple times on first setup** | Combination of missing plugins, wrong credential IDs, and syntax issues | Debugged stage-by-stage using **Jenkins Console Output**, fixing one error at a time rather than rewriting the whole pipeline |
-| **Confusion between `localhost` and public IP** | Tried accessing the app via `localhost` from a local machine, which doesn't resolve to the remote EC2 server | Used the EC2 instance's **public IPv4 address** instead |
-| **Docker login warnings** | Docker CLI warned about storing credentials in plaintext config | Used credential injection via Jenkins (`docker login -u $USER -p $PASS`) rather than manual, persistent `docker login` sessions |
+| **Permission denied accessing `docker.sock`** | The Docker socket file has restrictive permissions by default, and the calling user wasn't in the `docker` group | Fixed by correcting group membership instead of unsafely `chmod`-ing the socket |
+| **Jenkins container could not SSH into EC2 / SSH key issues** | The Jenkins Docker container didn't have the SSH Agent plugin configured, and no key was mounted/loaded | Installed the **SSH Agent plugin** and added the private key as a Jenkins credential (`deploy-server-ssh-key`) |
+| **`deploy-server-ssh-key` not found (wrong credential ID)** | Credential ID in the Jenkinsfile didn't exactly match the ID configured in Jenkins' Credentials Store | Re-checked and matched the credential ID exactly (IDs are case-sensitive) |
+| **Jenkinsfile syntax errors** | Declarative pipeline syntax is strict — a missing or extra `{ }` breaks the entire pipeline parse step | Reviewed the pipeline stage-by-stage to pinpoint the exact line, then corrected the brace structure |
+| **Missing docker group (on EC2)** | The `ubuntu` user wasn't in the `docker` group on the deploy server | `sudo usermod -aG docker ubuntu` and re-logged in for the group change to take effect |
+| **Container not running after deploy** | Old container removal or new container start step failed silently | Debugged stage-by-stage using **Jenkins Console Output**, fixing one error at a time |
+| **Security Group configuration** | Required ports (22, 5000, 8080) weren't open in the EC2 Security Group | Updated the inbound rules to allow the correct ports |
 
 > 📌 **Key takeaway:** Almost every real DevOps issue in this project traced back to either **permissions** (Linux user/group access) or **credential/ID mismatches** — both extremely common in real-world CI/CD debugging.
 
@@ -368,37 +385,48 @@ ssh -i key.pem ubuntu@<ec2-public-ip>  # Connect to EC2 via SSH
 
 ---
 
+## 📸 Project Screenshots
+
+- GitHub Repository
+- Jenkins Dashboard
+- Successful Build
+- Jenkins Console Output
+- Docker Images
+- DockerHub Repository
+- EC2 Instance
+- Security Group
+- Running Container
+- Browser Output
+
+---
 
 ## 🎓 Learning Outcomes
 
 Through building this project, the following skills were developed hands-on:
 
 - 🐳 **Docker** — writing Dockerfiles, image tagging, container lifecycle management
-- ⚙️ **Jenkins** — declarative pipelines, plugins, credentials management, webhook triggers
+- ⚙️ **Jenkins** — declarative pipelines, plugins, credentials management, **Manual Jenkins Pipeline Execution**
 - 🐧 **Linux** — user/group permissions, systemd services, file permissions
-- ☁️ **AWS** — EC2 provisioning, Security Groups, cloud server management
-- 🌐 **GitHub** — version control, webhooks, repository management
-- 📦 **Docker Hub** — image registries, push/pull workflows
+- ☁️ **AWS EC2** — provisioning, Security Groups, cloud server management
 - 🔐 **SSH** — key-based authentication, secure remote command execution
-- 🔄 **CI/CD** — end-to-end automated build/test/deploy pipeline design
-- 🧩 **Pipeline Design** — structuring multi-stage, fail-fast automation workflows
+- 📦 **Docker Hub** — image registries, push/pull workflows
+- 🔄 **CI/CD Pipeline** — end-to-end automated build/deploy pipeline design
 
 ---
 
-## 🚧 Future Improvements
+## 🚀 Future Improvements
 
-- [ ] Add automated **unit testing** with **Pytest** as a pipeline stage/quality gate
+- [ ] Add **GitHub Webhooks** to trigger the pipeline automatically
+- [ ] Implement **Automatic Pipeline Trigger** on every push
+- [ ] Add automated **Unit Testing** with **Pytest** as a pipeline stage/quality gate
 - [ ] Integrate **SonarQube** for static code quality analysis
 - [ ] Add **Trivy** for Docker image vulnerability scanning
-- [ ] Add **OWASP Dependency Check** for dependency vulnerability scanning
-- [ ] Add an **Nginx reverse proxy** in front of the app for SSL termination and load balancing
 - [ ] Use **Docker Compose** for multi-container orchestration
 - [ ] Migrate deployment to **Kubernetes** for scalability and self-healing
 - [ ] Provision infrastructure with **Terraform** (Infrastructure as Code)
 - [ ] Automate server configuration with **Ansible**
 - [ ] Add **Prometheus + Grafana** for real-time monitoring and alerting
 - [ ] Explore **GitHub Actions** as an alternative/complementary CI/CD trigger
-- [ ] Implement **Blue-Green Deployment** and **Rolling Updates** for zero-downtime releases
 
 ---
 
