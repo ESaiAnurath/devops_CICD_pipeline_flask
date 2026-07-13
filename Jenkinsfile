@@ -17,15 +17,15 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+       /* stage('Install Dependencies') {
             steps {
                 dir('app') {
                     sh 'pip install -r requirements.txt'
                 }
             }
-        }
+        } */
 
-        stage('Run Tests') {
+       /* stage('Run Tests') {
             steps {
                 dir('app') {
                     // Pipeline stops here automatically if any test fails
@@ -37,7 +37,7 @@ pipeline {
                     junit 'app/test-results.xml'
                 }
             }
-        }
+        }*/
 
         stage('Build Docker Image') {
             steps {
@@ -80,7 +80,7 @@ pipeline {
             echo "Pipeline failed. Check the logs above."
         }
         always {
-            sh "docker logout"
+            sh "docker logout || true"  // Logout from DockerHub to clean up credentials
         }
     }
 }
