@@ -15,7 +15,7 @@
 | 04 | `screenshots/04-console-output.png` | Jenkins Console Output |
 | 05 | `screenshots/05-docker-images.png` | Docker Images (`docker images`) |
 | 06 | `screenshots/06-dockerhub-repo.png` | Docker Hub Repository |
-| 07 | `<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>'|AWS EC2 Instance |
+| 07 | `<img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/f977a5b9-ec40-4cbc-8541-1f87de103fb3"/>'|AWS EC2 Instance |
 | 08 | `screenshots/08-security-group.png` | Security Group Configuration |
 | 09 | `screenshots/09-running-container.png` | Running Docker Container (`docker ps`) |
 | 10 | `screenshots/10-app-running.png` | Application Running in Browser |
