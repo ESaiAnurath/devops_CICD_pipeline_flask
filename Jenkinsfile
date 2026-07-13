@@ -3,9 +3,9 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-creds')   // set up in Jenkins > Credentials
-        IMAGE_NAME  = "YOUR_DOCKERHUB_USERNAME/devops-demo-app"
+        IMAGE_NAME  = "eshwarapragadasaianurath7779/devops-demo-app"
         IMAGE_TAG   = "${env.BUILD_NUMBER}"
-        DEPLOY_HOST = "your.server.ip.address"                   // EC2 / cloud VM public IP
+        DEPLOY_HOST = "http://3.84.176.50/"                   // EC2 / cloud VM public IP
     }
 
     stages {
@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Pulls the latest code from GitHub (triggered by webhook on push)
-                git branch: 'main', url: 'https://github.com/YOUR_USERNAME/devops-pipeline-project.git'
+                git branch: 'main', url: 'https://github.com/ESaiAnurath/devops_CICD_pipeline_flask.git'
             }
         }
 
